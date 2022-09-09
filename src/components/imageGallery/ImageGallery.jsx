@@ -17,18 +17,18 @@ const ImageGallery = (props) => {
 
   useEffect(() => {
     props.query &&
-      fetch(`${BASE_URL}?q=${props.query}&page=${props.page || 1}&key=${KEY}&image_type=photo&orientation=horizontal&per_page=12`)
+    fetch(`${BASE_URL}?q=${props.query}&page=${props.page || 1}&key=${KEY}&image_type=photo&orientation=horizontal&per_page=12`)
       .then(res => {
         if (!res.ok) {
           throw new Error(res.status);
         }
         return res.json();
       }).then(images => {
-        setImgQuery({
-          ...imgQuery,
-          ...images
-        })
-      })
+      setImgQuery({
+        ...imgQuery,
+        ...images,
+      });
+    })
       .catch((error) => {
         console.error(error.message);
         setImgQuery(null);
@@ -37,7 +37,6 @@ const ImageGallery = (props) => {
       });
     // eslint-disable-next-line
   }, [props.query, props.page]);
-
 
   const toggleModal = () => {
     setShowModal(showModal => !showModal);
@@ -64,6 +63,8 @@ const ImageGallery = (props) => {
 
 ImageGallery.propTypes = {
   query: PropTypes.string.isRequired,
+  page: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;
