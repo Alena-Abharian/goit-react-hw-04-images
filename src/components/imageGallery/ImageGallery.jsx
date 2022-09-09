@@ -12,8 +12,9 @@ const ImageGallery = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [selected, setSelected] = useState(null);
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  const getImages = (page) => {
+ const getImages = (page) => {
     const BASE_URL = 'https://pixabay.com/api/';
     const KEY = '17103623-ab930b7d528134dd68b9da242';
     setLoading(true);
@@ -35,13 +36,13 @@ const ImageGallery = (props) => {
 
   useEffect(() => {
     props.query &&
-    getImages()
-      .then(imgQuery => {
-        setImgQuery(imgQuery);
-        setShowModal(false);
-        setPage(1);
-        setLoading(false);
-      });
+     getImages()
+       .then(imgQuery => {
+       setImgQuery(imgQuery);
+       setShowModal(false);
+       setPage(1);
+       setLoading(false);
+     });
   }, [props.query]);
 
   const handleClick = () => {
