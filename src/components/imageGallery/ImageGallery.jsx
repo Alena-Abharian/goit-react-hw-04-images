@@ -1,11 +1,10 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ImageGalleryItem from '../imageGalleryItem';
 import Button from '../button';
 import Modal from '../modal/Modal';
 import Loader from '../loader';
 import s from './ImageGallery.module.css';
-import { queries } from '@testing-library/react';
 
 const ImageGallery = (props) => {
   const [imgQuery, setImgQuery] = useState(null);
