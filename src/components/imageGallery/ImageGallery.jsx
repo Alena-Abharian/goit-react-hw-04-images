@@ -32,7 +32,7 @@ const ImageGallery = (props) => {
         setLoading(false);
       });
   };
-  console.log('imgQuery', imgQuery);
+
   useEffect(() => {
     props.query &&
     getImages()
